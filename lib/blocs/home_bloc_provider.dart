@@ -5,7 +5,7 @@ class HomeBlocProvider extends InheritedWidget{
   final HomeBloc homebloc;
   final String uid;
 
-  HomeBlocProvider({required Key key, required Widget child, required this.homebloc, required this.uid})
+  HomeBlocProvider({Key? key, required Widget child, required this.homebloc, required this.uid})
   : super(key: key, child: child);
 
   static HomeBlocProvider of(BuildContext context){
