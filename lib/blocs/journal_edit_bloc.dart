@@ -67,15 +67,15 @@ class JournalEditBloc{
       selectedJournal.mood = journal.mood;
       selectedJournal.note = journal.note; 
     }
-    dateEditChanged.add(selectedJournal.date);
-    moodEditChanged.add(selectedJournal.mood);
-    noteEditChanged.add(selectedJournal.note);
+    dateEditChanged.add(selectedJournal.date!);
+    moodEditChanged.add(selectedJournal.mood!);
+    noteEditChanged.add(selectedJournal.note!);
   }
 
   void _saveJournal(){
     Journal journal = Journal(
       documentID: selectedJournal.documentID,
-      date: DateTime.parse(selectedJournal.date).toIso8601String(),
+      date: DateTime.parse(selectedJournal.date!).toIso8601String(),
       mood: selectedJournal.mood,
       note: selectedJournal.note,
       uid: selectedJournal.uid,

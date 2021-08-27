@@ -13,7 +13,7 @@ class DbFirestoreService implements DbApi{
     .snapshots()
     .map((QuerySnapshot snapshot){
       List<Journal> _journalDocs = snapshot.docs.map((doc) => Journal.fromDoc(doc)).toList();
-      _journalDocs.sort((comp1, comp2) => comp2.date.compareTo(comp1.date));
+      _journalDocs.sort((comp1, comp2) => comp2.date!.compareTo(comp1.date!));
       return _journalDocs;
     });
   }
@@ -52,12 +52,14 @@ class DbFirestoreService implements DbApi{
 
   @override
   Future<Journal> getJournal(String documentID) {
+    // ignore: todo
     // TODO: implement getJournal
     throw UnimplementedError();
   }
 
   @override
   void updateJournalWithTransaction(Journal journal) {
+    // ignore: todo
     // TODO: implement updateJournalWithTransaction
   }
 }  

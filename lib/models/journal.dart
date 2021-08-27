@@ -1,16 +1,16 @@
 class Journal{
-  String documentID;
-  String date;
-  String mood;
-  String note;
-  String uid;
+  String? documentID;
+  String? date;
+  String? mood;
+  String? note;
+  String? uid;
 
   Journal({
-    required this.documentID,
-    required this.date,
-    required this.mood,
-    required this.note,
-    required this.uid
+     this.documentID,
+     this.date,
+     this.mood,
+     this.note,
+     this.uid
   });
 
   factory Journal.fromDoc(dynamic doc) => Journal(
