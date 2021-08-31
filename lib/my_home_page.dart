@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:journal/blocs/authentication_bloc.dart';
 import 'package:journal/blocs/authentication_bloc_provider.dart';
@@ -196,7 +194,24 @@ class _MyHomePageState extends State<MyHomePage> {
                 size: 43.0
                 ,)
             ),
+            title: Text(
+              _titleDate,
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            subtitle: Text(_subtitle),
+            onTap: (){
+              _addOrEditJournal(
+                add: false,
+                journal: snapshot.data[index]
+              );
+            },
           ),
+          confirmDismiss: (direction) async{
+            bool confirmDelete = await _confirmDeleteJournal();
+            if (confirmDelete){
+              _homeBloc.deleteJournal.add(snapshot.data[index]);
+            }
+          },
         );
       },
       separatorBuilder: (BuildContext context, int index){

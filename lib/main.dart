@@ -7,8 +7,13 @@ import 'package:journal/blocs/home_bloc_provider.dart';
 import 'package:journal/services/autentication.dart';
 import 'package:journal/services/db_firestore.dart';
 import 'package:journal/pages/login.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
 
@@ -26,7 +31,7 @@ class MyApp extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.waiting){
             return Container(
               color: Colors.lightGreen,
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(semanticsLabel: 'Waiting data',color: Colors.white),
             );
           } else if (snapshot.hasData){
             return HomeBlocProvider(
